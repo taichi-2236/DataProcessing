@@ -1,0 +1,8 @@
+# 出力ファイルは追跡しない
+**\figure
+**\movie
+
+# 中間ファイルは追跡しない
+**\from_foxglove
+**\from_SD
+**\data_json
