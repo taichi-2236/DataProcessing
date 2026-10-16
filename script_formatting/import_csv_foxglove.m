@@ -2,7 +2,7 @@
 
 % # ===== データ取得 =====
 if ~exist('auto', 'var')
-	datafile = "PushDribble_Circ_CMD_initerr0_NoN11.mcap";
+	datafile = "PushDribble_Circ_HeightChangeTest_NoN11.mcap";
 end
 
 which(datafile)

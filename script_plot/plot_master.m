@@ -30,10 +30,10 @@ for k = 1:size(split_edge_idx,1)
 		datafile = append(dir,name,'_',string(k),ext);
 	end
 	
-	% q_r(:,1:2) = yellow_robot(start:finish,r.x:r.y) / 1000;
-	% q_r(:,3)   = yellow_robot(start:finish,r.angle);
-	q_r(:,1:2) = blue_robot(start:finish,r.x:r.y) / 1000;
-	q_r(:,3)   = blue_robot(start:finish,r.angle);
+	q_r(:,1:2) = yellow_robot(start:finish,r.x:r.y) / 1000;
+	q_r(:,3)   = yellow_robot(start:finish,r.angle);
+	% q_r(:,1:2) = blue_robot(start:finish,r.x:r.y) / 1000;
+	% q_r(:,3)   = blue_robot(start:finish,r.angle);
 	% q_r(:,1:2) = raw_blue_robot(start:finish,r.x:r.y) / 1000;
 	% q_r(:,3)   = raw_blue_robot(start:finish,r.angle); 
 	q_b        = ball(start:finish,b.x:b.y) / 1000;
