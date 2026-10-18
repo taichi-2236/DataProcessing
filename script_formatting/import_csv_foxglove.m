@@ -1,24 +1,33 @@
-%% import_csv_foxglove.m
+%% import_csv_foxglove
+% mcapデータをCSVに変換する．ボール，ロボット，レフェリー情報を変数に格納する．
 
-% # ===== データ取得 =====
+%%% 1. データ取得
+% mcapファイルからjsonを経由してCSVに変換
+
+% データファイル指定（Autoの場合はスキップ）
 if ~exist('auto', 'var')
 	datafile = "PushDribble_Circ_HeightChangeTest_NoN11.mcap";
 end
 
-which(datafile)
 % mcapファイルをjsonに変換
-jsonFile = convert_mcap2json(datafile,'data_json/');
-% jsonファイルをCSVに変換して読み取り
+topics = {};
+jsonFile = convert_mcap2json(datafile,'data_json/',topics);
+% jsonファイルをCSVに変換
 [csvFile, robotIds] = convert_json2csv(which(jsonFile),"data_csv\from_foxglove\",'foxglove_data_');
-data = readtable(csvFile);
+
+% datafileにCSVファイルのPathを格納
 datafile = csvFile;
 
-% # ===== 配列に格納 =====
+%%% 2. CSVファイルを読み出し
+% 変換したCSVファイルからデータを読み出す
+data = readtable(csvFile);
 
-% ## Visionデータ取得
+%%% 3. Visionデータ格納
+% Visionから得られるデータを配列に格納
+% ボール，ロボットそれぞれのフィルターされた値と生データを格納する
 vision_data  = data(strcmp(string(data.topic(:)),'/vision'),:);
 
-% ### ボールのデータを格納
+% ボールのデータを格納
 ball = [...
 	vision_data.sequence(:),...
 	vision_data.ball_x(:),...
@@ -35,7 +44,7 @@ raw_ball = [...
 	vision_data.rawBall_confidence(:),...
 ];
 
-% ### BlueRobotのデータを格納
+% BlueRobotのデータを格納
 if isfield(robotIds,'blueRobotIds')
 	blue_robot = [];
 	raw_blue_robot = [];
@@ -77,7 +86,7 @@ if isfield(robotIds,'blueRobotIds')
 	end
 end
 
-% ### YellowRobotのデータを格納
+% YellowRobotのデータを格納
 if isfield(robotIds,'yellowRobotIds')
 	yellow_robot = [];
 	raw_yellow_robot = [];
@@ -119,7 +128,8 @@ if isfield(robotIds,'yellowRobotIds')
 	end
 end
 
-% ## Referee信号取得
+%%% 4. Referee信号を格納
+% GCから送信される信号を格納する
 referee_data = data(strcmp(string(data.topic(:)),'/referee'),:);
 
 ref_info = [
@@ -129,4 +139,5 @@ ref_info = [
 	string(referee_data.state(:)),...
 ];
 
+%%% 5. 終了処理
 clear i id rawId
