@@ -46,7 +46,7 @@ for k = 1:size(split_edge_idx,1)
 
 	% 軌跡図生成
 	run("plot_orbit");
-	run("plot_err_traj2ball");
+	% run("plot_err_traj2ball");
 
 	datafile = tmp_datafile;
 

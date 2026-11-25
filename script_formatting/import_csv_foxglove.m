@@ -6,11 +6,11 @@
 
 % データファイル指定（Autoの場合はスキップ）
 if ~exist('auto', 'var')
-	datafile = "PushDribble_Circ_HeightChangeTest_NoN11.mcap";
+	datafile = "PushDribble_CircStrt_In_vx500_NoN11.mcap";
 end
 
 % mcapファイルをjsonに変換
-topics = {};
+topics = {'vision','referee'};
 jsonFile = convert_mcap2json(datafile,'data_json/',topics);
 % jsonファイルをCSVに変換
 [csvFile, robotIds] = convert_json2csv(which(jsonFile),"data_csv\from_foxglove\",'foxglove_data_');
