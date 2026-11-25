@@ -19,8 +19,9 @@ function outputFileName = convert_bin2csv(inputFileName, scriptFolderPath)
 		inputFile = inputFileName;
 	end
 	
-
 	cmd = sprintf('%s %s', scriptPath, inputFile);
+
+	disp('Convert : bin >>> csv ...');
 	
 	[status, output] = system(cmd);
 	
