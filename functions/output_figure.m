@@ -3,16 +3,21 @@
 %  * @param datafile ファイルパス
 %  * @param dir      保存先のディレクトリ
 %  * @param tag      ファイル名の先頭につけるタグ
+%  * @param cropflag 余白削除するかのフラグ（defaultはtrue）
 %  */
-function output_figure(datafile,dir,tag)
-    if nargin < 2 || isempty(dir)
-        dir = '';
-    end
-    if nargin < 3 || isempty(tag)
-        tag = '';
+function output_figure(datafile,dir,tag,cropflag)
+    arguments
+        datafile string
+        dir      string  = ''
+        tag      string  = ''
+        cropflag logical = true
     end
     [~,name,~] = fileparts(datafile);
     output = append(dir,tag,regexprep(name,"\w*_data_",""),".pdf");
-    print(output,'-dpdf','-fillpage');
+    if cropflag
+        exportgraphics(gca, output);
+    else
+        print(output,'-dpdf','-fillpage');
+    end
     disp("PlotOut : "+output);
 end
