@@ -1,6 +1,6 @@
 %% Robotのデータ配列における各ロボットの列名クラス
 classdef RobotIdx
-	properties (SetAccess = protected, GetAccess = public)
+	properties (SetAccess = immutable, GetAccess = public)
 		seq   = 1 % 記録フレーム
 		id    = 2 % ロボットID
 		x     = 3 % x座標
