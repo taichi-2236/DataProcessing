@@ -1,8 +1,8 @@
 # 出力ファイルは追跡しない
-**\figure
-**\movie
+output/figure/
+output/movie/
 
 # 中間ファイルは追跡しない
-**\from_foxglove
-**\from_SD
-**\data_json
+data/csv/from_foxglove/
+data/csv/from_SD/
+data/json/
