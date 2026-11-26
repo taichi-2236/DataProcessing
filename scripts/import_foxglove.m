@@ -2,7 +2,7 @@
 % Foxglove (.mcap / .json / .csv) データを読み込み、ワークスペース変数に展開するスクリプト
 
 %%% 1. 読み込むデータファイルとトピックの指定
-datafile = "PushDribble_CircStrt_In_vx500_NoN11.mcap";
+datafile = "PushDribble_CircStrt_Out_fix_vx500_NoN11.mcap";
 topics   = {'vision', 'referee'};
 
 %%% 2. 変換およびデータ読み込み

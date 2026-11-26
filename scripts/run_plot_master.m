@@ -4,16 +4,16 @@
 
 %%% 1. 描画・区間分割オプション設定
 splitMultipleRuns = false;         % true の場合は不連続なReady区間を別々の実験として分割
-useRawData        = false;         % true の場合は生データ (q_r_raw, q_b_raw) を描画に使用
-targetTraj        = traj.preset("CircStrt_In");
+useRawData        = true;         % true の場合は生データ (q_r_raw, q_b_raw) を描画に使用
+targetTraj        = traj.preset("CircStrt_Out");
 % プリセットやカスタム経路の指定例:
 % targetTraj = traj.preset("Circle");
 % targetTraj = { ...
 %     traj.Line([-0.5; 1.0], [-0.5; 1.0 - sqrt(3)/2]), ...
 %     traj.Arc([0.0; 1.0], 1.0, AngleRange=[0, pi]) ...
 % };
-xLimRange         = [-1.75, 1.75];
-yLimRange         = [-0.75, 2.75];
+xLimRange         = [-2.75, 1.75];
+yLimRange         = [-1.75, 1.75];
 directionFrames   = [];            % 姿勢方向を描くフレーム例: 10:20:600
 velocityFrames    = [];            % 並進速度を描くフレーム例: 10:20:600
 robotBallFrames   = [];            % 機体イメージを描くフレーム例: [1, 45]
